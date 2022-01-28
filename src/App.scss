@@ -14,20 +14,20 @@
   }
 }
 
-.smooth-image-wrapper {
+.lazy-image-wrapper {
   width: 100%;
   height: 15em;
   position: relative;
   border-radius: 3px;
   overflow: hidden;
   
-  .smooth-image{
+  .lazy-image{
     transition: opacity 1s;
     @extend .fullSize;
     object-fit: cover;
   }
   
-  .smooth-no-image {
+  .lazy-alt {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@
     opacity: 0;
   }
   
-  .smooth-preloader {
+  .lazy-preloader {
     position: absolute;
     top: 0;
     left: 0;
@@ -52,7 +52,7 @@
     background: rgba(245, 245, 245, 0.34);
   }
     
-  .smooth-preloader .loader     {
+  .lazy-preloader .loader     {
     background-image: linear-gradient(to right, #e6e6e6, #ffffff, #e6e6e6);
     @extend .fullSize;
     display: inline-block;

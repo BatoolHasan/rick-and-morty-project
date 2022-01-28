@@ -3,7 +3,7 @@ import React from 'react';
 //Router
 import { Link } from 'react-router-dom';
 //Components
-import {Logo} from '../Logo';
+import {Logo} from '../Micro/Logo';
 
 export const Header = () => {
   return (
