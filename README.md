@@ -20,4 +20,4 @@ It displays a list of characters and allows the user to search, filter, and view
 <br/>
 2- Added a fallback placeholder for the alt text instead of the default alt in the LazyImage component.
 <br/>
-3- Implemented filtering on clientside due to size of data.
+3- Implemented filtering on client-side due to size of data.
