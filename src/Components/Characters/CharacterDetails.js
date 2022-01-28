@@ -22,7 +22,8 @@ export const CharacterDetails = () => {
     const {name, status, species, gender, origin:{name : originName}, location:{name : locationName}, image, episode, created} = data.character;
     const statusBadgeStyle = getStatusBadgeStyle(status);
   return (
-    <Card className="character-details">
+
+    <Card className="character-details m-auto">
         <Card.Header className="text-center"><h1>{name}</h1></Card.Header>
         <Card.Body>
             <div className="row">
@@ -30,22 +31,24 @@ export const CharacterDetails = () => {
                 <LazyImage src={image} alt={name}/>
               </div>
               <div className="col-md-6">
-                  <div className="row mb-2">
+                  <div className="row mb-4">
                     <div className='col-md-6'><strong>Species: </strong>{species}</div>
-                    <div className='col-md-6'><Badge bg={statusBadgeStyle}>{status}</Badge></div>
+                    <div className='col-md-6'><h4><Badge bg={statusBadgeStyle}>{status}</Badge></h4></div>
                   </div>
-                  <div className="row mb-2">
+                  <div className="row mb-4">
                     <div className='col-md-6'><strong>Gender: </strong>{gender}</div>
                     <div className='col-md-6'><strong>Origin: </strong>{originName}</div>
                   </div>
                   <p><strong>Last known location: </strong>{locationName}</p>
-                  <hr/>
+
+              </div>
+            </div>
+            <div className='row mt-4'>
+            <hr/>
                   <p><strong>Appeard in:</strong></p>
                   <ul className="list-unstyled">
                     {episode.map(e=><li key={e.id}>{e.name}</li>)}
                   </ul>
-
-              </div>
             </div>
         </Card.Body>
         <Card.Footer className="text-muted text-center">Created on: {new Date(created).toDateString()}</Card.Footer>

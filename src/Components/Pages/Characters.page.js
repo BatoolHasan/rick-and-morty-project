@@ -6,10 +6,10 @@ import { Spinner } from '../Utils/Spinner';
 import { Search } from '../../Features/Search';
 import { Filters } from '../../Features/Filter/Filters';
 export const CharactersPage = () => {
-  const intitialFilters = {status:[]};
+  const defaultFilters = {status:[], species:[], gender:[]};
     const { data, loading, error } = useQuery(GET_CHARACTERS);
     const [searchQuery, setSearchQuery] = useState("");
-    const [filterQuery, setFilterQuery] = useState(intitialFilters);
+    const [filterQuery, setFilterQuery] = useState(defaultFilters);
     const handleSearch=(event)=>setSearchQuery(event.target.value);
     if (loading) {
       return ( <Spinner/>);
@@ -23,22 +23,25 @@ export const CharactersPage = () => {
       const filterKey = event.target.name;
       const filterValue = event.target.value;
       const prevValues = filterQuery[filterKey];
-      const newValues = filterChecked?[...prevValues, filterValue]:[...prevValues].filter(f=>f!=filterValue);
+      const newValues = filterChecked?[...prevValues, filterValue]:[...prevValues].filter(f=>f!==filterValue);
       setFilterQuery({...filterQuery, [filterKey]:newValues})
     }
     const ifMatchesFilter=(result)=>{
       const filterKeys = Object.keys(filterQuery);
-      return filterKeys.filter(f=>{
-        return filterQuery[f].length==0?true:filterQuery[f].includes(result[f])}).length>0;
+      let matches = [];
+      filterKeys.forEach(f=>{
+        matches.push(filterQuery[f].length===0?true:filterQuery[f].includes(result[f]));
+      })
+        return !matches.includes(false);
     }
     const {results} = data.characters;
-    const statusValues = [...new Set(results.map((result)=>result.status))];
-    // setFilterQuery({...filterQuery, status:statusValues});
-    const filteredResults = results.filter((result)=>result.name.toLowerCase().includes(searchQuery.toLowerCase()) && ifMatchesFilter(result));
+    let initialFilters={...defaultFilters};
+    Object.keys(defaultFilters).forEach(defaultFilter=>(initialFilters[defaultFilter]=[...new Set(results.map((result)=>result[defaultFilter]))]))
+    const filteredResults = results.filter((result)=>result.name.toLowerCase().includes(searchQuery.toLowerCase().trim()) && ifMatchesFilter(result));
   return (
       <>
       <Search handleSearch={handleSearch}/>
-      <Filters handleChange={handleChange} filterValues={statusValues}/>
+      <Filters handleChange={handleChange} initialFilters={initialFilters}/>
       <CharactersList characters={filteredResults}/>
       </>
   );

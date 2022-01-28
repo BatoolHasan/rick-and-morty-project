@@ -1,19 +1,9 @@
 import React from 'react';
-import { Dropdown} from 'react-bootstrap';
-import { Filter } from './Filter';
-export const Filters = ({handleChange, filterValues}) => {
+import { FilterDropdown } from './FilterDropdown';
+export const Filters = ({initialFilters, handleChange}) => {
   return (
-
-    <Dropdown>
-    <Dropdown.Toggle variant="dark" id="dropdown-basic">
-      Status
-    </Dropdown.Toggle>
-
-    <Dropdown.Menu>
-      <div className="p-2">
-        {filterValues.map(fv=><Filter handleChange={handleChange} filterKey="status" filterValue={fv} key={fv}/>)}
+      <div className="d-flex justify-content-center align-items-center">
+          {Object.keys(initialFilters).map(filterKey=><FilterDropdown handleChange={handleChange} filterKey={filterKey} filterValues={(initialFilters[filterKey])} key={filterKey}/>)}
       </div>
-    </Dropdown.Menu>
-  </Dropdown>
   );
 };

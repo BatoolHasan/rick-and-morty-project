@@ -1,10 +1,10 @@
 import React from 'react';
 import {Form} from 'react-bootstrap';
-export const Filter = ({handleChange, filterValue, filterKey}) => {
+export const FilterCheckbox = ({handleChange, filterValue, filterKey}) => {
   return (
     <Form.Check 
       type={"checkbox"}
-      id={`default-${"checkbox"}`}
+      id={`checkbox-${filterKey}-${filterValue}`}
       label={filterValue}
       onChange={handleChange}
       name={filterKey}
