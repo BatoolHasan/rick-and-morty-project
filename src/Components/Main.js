@@ -1,15 +1,18 @@
-import {Routes, Route} from 'react-router-dom';
 import React from 'react';
+import {Routes, Route} from 'react-router-dom';
+import { Header } from './Layout/Header';
 import { CharactersPage } from './Pages/Characters.page';
-import { Logo } from './Logo';
+import { CharacterDetails } from './Characters/CharacterDetails';
 export const Main = () => {
   return (
       <>
-      <Logo/>
-    <Routes>
-      <Route path="/" element={<CharactersPage />}/>
-        {/* <Route path="teams" element={<Teams />}/> */}
-    </Routes>
+      <Header/>
+      <div className='p-2'>
+        <Routes>
+            <Route path="/" element={<CharactersPage />}/>
+            <Route path="/:id" element={<CharacterDetails />}/>
+        </Routes>
+      </div>
     </>
   );
 };
