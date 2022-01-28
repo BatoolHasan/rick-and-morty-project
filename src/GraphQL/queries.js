@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+//Get first 20 characters
 export const GET_CHARACTERS = gql`
 query Characters {
   characters{
@@ -14,6 +15,8 @@ query Characters {
   }
 }
 `;
+
+//Get character by id
 export const GET_CHARACTER= gql`
 query Character($id:ID!) {
   character(id:$id){
@@ -33,7 +36,8 @@ query Character($id:ID!) {
       image,
       episode{
         id,
-        name
+        name,
+        air_date
       },
       created
     }

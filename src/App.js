@@ -1,14 +1,27 @@
-import './App.css';
+//styling
+import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+//Apollo
 import { ApolloProvider } from '@apollo/client';
 import { client } from "./ApolloClient/client";
-import {BrowserRouter} from 'react-router-dom';
-import { Main } from './Components/Main';
+//Router
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+//Pages
+import { Header } from './Components/Layout/Header';
+import { CharactersPage } from './Components/Pages/Characters.page';
+import { CharacterDetailsPage } from './Components/Pages/CharacterDetails.page';
+
 function App() {
   return (
     <ApolloProvider client={client}>
     <BrowserRouter>
-      <Main/>
+    <Header/>
+      <div className='p-2'>
+        <Routes>
+            <Route path="/" element={<CharactersPage />}/>
+            <Route path="/:id" element={<CharacterDetailsPage />}/>
+        </Routes>
+      </div>
     </BrowserRouter>
   </ApolloProvider>
   );
