@@ -9,13 +9,19 @@ It displays a list of characters and allows the user to search, filter, and view
 
 ## Steps to Run the Project
 
-### 1) Clone the project
+### 1) Clone the project in your desired folder.
 
-### 2) `npm i`
+### 2) Make sure that node and npm are installed on your device. My specific versions of node and npm are v16.13.1 and 8.1.2, respectively.
 
-### 3) `npm start`
+### 3) Inside your project folder, run `npm i` in your terminal.
+
+### 4) Inside your project folder, run `npm start` in your terminal.
 
 ## Improvements
-1- Added an animated placeholder for the images while they load using the LazyImage component.
+Improved the user experience by:
 <br/>
-2- Added a fallback placeholder for the alt text instead of the default alt in the LazyImage component.
+1- Adding an animated placeholder for the images while they load using the LazyImage utility component.
+<br/>
+2- Adding a fallback placeholder for the alt text instead of the default alt in the LazyImage utility component.
+<br/>
+These improvements depend on checking when the image has finished loading and whether its source is valid.
