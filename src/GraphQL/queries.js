@@ -2,8 +2,13 @@ import { gql } from "@apollo/client";
 
 //Get first 20 characters
 export const GET_CHARACTERS = gql`
-query Characters {
-  characters{
+query Characters($page:Int, $filter:FilterCharacter)  {
+  characters(page:$page, filter:$filter) {
+    info{
+      next,
+      prev,
+      pages
+    },
     results{
       id,
       name,

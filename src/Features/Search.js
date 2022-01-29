@@ -1,15 +1,14 @@
 //React
 import React from 'react';
 //Bootstrap
-import { Form } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 
-export const Search = ({handleSearch}) => {
+export const Search = ({handleSearch, handleSubmit, value}) => {
   return (
-    <Form className='p-3' onSubmit={(event)=>event.preventDefault()}>
-        <Form.Group className="mb-3 row d-flex justify-content-center align-items-center" controlId="search">
-          <div className='col-sm-8 col-md-4'>
-            <Form.Control type="text" placeholder="search for a character..." onChange={handleSearch}/>
-          </div>
+    <Form className='p-3' onSubmit={handleSubmit}>
+        <Form.Group className="mb-3 d-flex justify-content-center align-items-center" controlId="search">
+            <Form.Control value={value} style={{maxWidth:"40rem", marginRight:"1em"}} type="text" placeholder="search for a character..." onChange={handleSearch}/>
+            <Button variant="outline-dark" type="submit">Search</Button>
         </Form.Group>
   </Form>
   );

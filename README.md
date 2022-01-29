@@ -19,5 +19,3 @@ It displays a list of characters and allows the user to search, filter, and view
 1- Added an animated placeholder for the images while they load using the LazyImage component.
 <br/>
 2- Added a fallback placeholder for the alt text instead of the default alt in the LazyImage component.
-<br/>
-3- Implemented filtering on client-side due to size of data.
