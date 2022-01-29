@@ -10,6 +10,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { Header } from './Components/Layout/Header';
 import { CharactersPage } from './Components/Pages/Characters.page';
 import { CharacterDetailsPage } from './Components/Pages/CharacterDetails.page';
+import { ErrorPage } from './Components/Pages/Error.page';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
             <Route path="/" element={<CharactersPage />}/>
             <Route path="/:id" element={<CharacterDetailsPage />}/>
+            <Route path="/error" element={<ErrorPage />}/>
         </Routes>
       </div>
     </BrowserRouter>

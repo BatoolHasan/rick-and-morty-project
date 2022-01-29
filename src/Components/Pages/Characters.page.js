@@ -12,7 +12,7 @@ import { Pagination } from '../../Features/Pagination';
 import { Spinner } from '../Utils/Spinner';
 //Components
 import { CharactersList } from '../Characters/CharactersList';
-import { ErrorPage } from './Error.page';
+import { Navigate } from 'react-router-dom';
 
 export const CharactersPage = () => {
   //Default values for filtering
@@ -36,7 +36,7 @@ export const CharactersPage = () => {
     }
   
     if (error) {
-      return <ErrorPage error={error}/> ;
+      return <Navigate to="/error"/> ;
     }
     //Set search input to what the user is typing
     const handleSearch=(event)=>setSearchInput(event.target.value);
